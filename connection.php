@@ -1,17 +1,23 @@
 <?php
 
- $serverName = 'localhost';
- $userName = 'root';
- $password = '';
- $dbName = 'student_management';
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbName = "students";
 
- $conct = mysqli_connect($serverName,$userName,$password,$dbName);
+$conn = mysqli_connect($servername, $username, $password,$dbName);
 
-//  if($conct){
-//     echo "Connection Successfull";
-//  }
-//  else{
-//      echo "Connection Error";
-//  }
-
+if ($conn) {
+?>
+    <script>
+        console.log('Connection Successfull');
+    </script>
+<?php
+} else {
+?>
+    <script>
+        console.log('Connection Error');
+    </script>
+<?php
+}
 ?>
