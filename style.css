@@ -26,3 +26,7 @@
     background-color: black;
     color: white;
 }
+
+.main-container .error {
+    color: red !important;
+}
