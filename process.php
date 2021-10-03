@@ -31,22 +31,23 @@
 
         // $studentId = $student_id;
         if (empty($student_id)) {
-            $idErr = "* Id". " Field Is Required" . "<br>";
+            $idErr = "* Id  Field Is Required" . "<br>";
         } else {
             $studentId = test_input( $student_id);
         }
         
 
         if (empty($student_name)) {
-            $nameErr = "* Name ".  "Field Is Required". "<br>" ;
+            $nameErr = "* Name  Field Is Required". "<br>" ;
         } else {
             $studentName = $student_name;
         }
         
         // $studentName = $student_name;
         // $email = $email;
+        
         if (empty($email)) {
-            $emailErr ="* Email ". "Field Is Required" ."<br>" ;
+            $emailErr ="* Email Field Is Required" ."<br>" ;
         } else {
             $email = $email;
         }
