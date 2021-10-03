@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">    
     <title>Registration Form</title>
     <link rel="stylesheet" href="style.css">
+    <!-- <script src="theme-fun.js" ></script> -->
 </head>
 
 <body>    
@@ -19,18 +20,23 @@
 
 
     <section class="main-container">
-        <h2>Registeration Form</h2>        
+        <h2>Registeration Form</h2> 
+        <span id="nameError" ></span>
+        <span id="emailError" ></span>
+         <span id="numError" ></span>       
+        <!--<span id="nameError" ></span>        -->
+
         <?php             
             if (  !empty($idErr) ||
                   !empty($nameErr) ||
                   !empty($emailErr) 
             ){
-                echo '<span class="error">'.$idErr. $nameErr .$emailErr.'</span>';
+                echo '<span  class="error">'.$idErr. $nameErr .$emailErr.'</span>';
             }
 
             if( empty($dataInsertSuccessfull) ){
                 ?>          
-                <form method="post" action="add-edit-form.php">
+                <form name="add-edit-form"  method="post" action="add-edit-form.php" onsubmit="return onSubmit()"  >
                     <input type="text" name="action" value="<?php echo $action; ?>" />    
 
                     <?php 
@@ -56,8 +62,7 @@
         ?>
     </section>
 
-
-
+<script src="theme-fun.js" ></script>
 </body>
 
 </html>
