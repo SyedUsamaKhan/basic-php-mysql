@@ -1,4 +1,16 @@
 <?php include 'connection.php'; 
+    function deleteId($id){
+        
+        global $conn, $dataInsertSuccessfull, $idErr;
+
+        $deleteQuery = "delete  from register_user where id=$id ";
+        $query = mysqli_query($conn, $deleteQuery);
+        if ($query) {
+            $dataInsertSuccessfull = 'Data Deleted SuccessFully';            
+        } else {
+            $idErr = "Error: " . $query . "<br>" . mysqli_error($conn); 
+        }
+    }
 
     // Declaring Variable For input fields and errors
 
@@ -14,6 +26,8 @@
     $idErr ="";
     $nameErr = "";
     $emailErr ="";
+    $selectData ="";
+    $confirm = "";
 
     $dataInsertSuccessfull ="";    
 
@@ -104,13 +118,20 @@
     }
     else if( $action == "delete" ){
         $id = $_GET['id'];
-        $deleteQuery = "delete  from register_user where id=$id ";
-        $query = mysqli_query($conn,    $deleteQuery);
-        if ($query) {
-            $dataInsertSuccessfull = 'Data Deleted SuccessFully';            
-        } else {
-            $idErr = "Error: " . $query . "<br>" . mysqli_error($conn); 
+
+        $selectData = "select *  from  register_user where id ={$id} ";
+        $query = mysqli_query($conn,$selectData);
+        $slctquery = mysqli_fetch_array($query);
+        if(strpos($slctquery['student_name'], "admin" ) !== false ){
+            $confirm1MsgBeforeDelete = "display.php?action=delete2&id=". $slctquery['id'];
         }
+        else{
+            deleteId($id);
+        }
+    }
+    else if ($action =="delete2"){
+        $id = $_GET['id'];
+        deleteId($id);   
     }
     else{
         $action = "add";

@@ -9,6 +9,26 @@
         <a href="add-edit-form.php">Add new user</a>        
     </header>
 
+
+    <br/><br/>
+    <div class="confirmBtns" id="btns" >
+    <?php
+                if(!empty($dataInsertSuccessfull)){
+                    echo '<span>'. $dataInsertSuccessfull    .'</span>';
+                }
+                if(!empty($confirm1MsgBeforeDelete)){
+                    ?>
+                    <span>Are you sure you want to delete admin ? <br></span>
+                    <a href="<?php echo $confirm1MsgBeforeDelete; ?>">Yes</a>
+                    <a id="no" href="#">No</a>
+                    <?php
+                }
+            ?> 
+    </div>
+    
+<br/><br/>
+
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,13 +66,14 @@
             </tr>
             <?php } 
             ?>         
-            <?php
-                if(!empty($dataInsertSuccessfull)){
-                    echo '<span>'. $dataInsertSuccessfull    .'</span>';
-                }
-            ?>
+            
         </tbody>
     </table>
 </body>
-
+<script>
+    noBtn =document.getElementById('no');
+    noBtn.addEventListener('click', function(){
+       document.getElementById('btns').style.display="none";
+    } );
+</script>
 </html>
